@@ -1,0 +1,116 @@
+/* ==========================================================================
+   ScrollIndicator Component Styles
+   ========================================================================== */
+
+.scroll-indicator {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 32px;
+  margin-top: 40px;
+  border-top: 1px solid var(--border-hairline);
+}
+
+@media (min-width: 768px) {
+  .scroll-indicator {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    margin-top: 32px;
+  }
+}
+
+.scroll-indicator__track {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.scroll-indicator__index {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-electric);
+  letter-spacing: 0.08em;
+}
+
+.scroll-indicator__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.scroll-indicator__action:hover {
+  color: var(--text-primary);
+}
+
+.scroll-indicator__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.scroll-indicator__line {
+  position: relative;
+  width: 48px;
+  height: 2px;
+  background-color: var(--border-default);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.scroll-indicator__dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 100%;
+  background-color: var(--accent-electric);
+  border-radius: 2px;
+  animation: scroll-sweep 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes scroll-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50%, 100% {
+    transform: translateX(300%);
+  }
+}
+
+.scroll-indicator__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+}
+
+.scroll-indicator__coord {
+  text-transform: uppercase;
+}
+
+.scroll-indicator__divider {
+  color: var(--border-default);
+}
+
+.scroll-indicator__status {
+  color: #065F46;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator__dot {
+    animation: none !important;
+    transform: translateX(14px);
+  }
+}

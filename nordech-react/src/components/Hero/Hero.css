@@ -1,0 +1,508 @@
+/* ==========================================================================
+   Hero Component Styles
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  padding-top: 32px;
+  padding-bottom: 48px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 64px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .hero {
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+}
+
+/* Background Atmosphere */
+.hero__backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero__glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  transition: opacity var(--transition-smooth);
+}
+
+.hero__glow-orb--left {
+  top: -60px;
+  left: -80px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(0, 82, 255, 0.12) 0%, rgba(248, 250, 253, 0) 70%);
+}
+
+.hero__glow-orb--right {
+  top: 10%;
+  right: -100px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.08) 0%, rgba(248, 250, 253, 0) 70%);
+}
+
+.hero__grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, transparent 75%);
+}
+
+/* ── Cursor-reactive halo ──────────────────────────────────────────────────
+   Ambient radial glow that lazily follows the mouse (lerp in JS).
+   --halo-x / --halo-y → interpolated position (% of hero dims).
+   --halo-active       → 0 (hidden) | 1 (visible).
+   Disabled on touch devices and when prefers-reduced-motion is set.
+   ─────────────────────────────────────────────────────────────────────── */
+.hero__halo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse 520px 420px at var(--halo-x, 50%) var(--halo-y, 50%),
+    rgba(0, 102, 255, 0.18) 0%,
+    rgba(0, 102, 255, 0.07) 35%,
+    rgba(0, 102, 255, 0.02) 60%,
+    transparent 75%
+  );
+  opacity: var(--halo-active, 0);
+  transition: opacity 0.8s ease;
+  will-change: opacity;
+}
+
+/* ── Grid cursor highlight ─────────────────────────────────────────────────
+   Same grid as the base pattern but masked to a tight ellipse around the
+   cursor — makes the grid appear to "surface" near the pointer.
+   ─────────────────────────────────────────────────────────────────────── */
+.hero__grid-cursor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: 
+    linear-gradient(to right, rgba(0, 82, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 82, 255, 0.07) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(
+    ellipse 220px 180px at var(--halo-x, 50%) var(--halo-y, 50%),
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 220px 180px at var(--halo-x, 50%) var(--halo-y, 50%),
+    black 0%,
+    transparent 100%
+  );
+  opacity: var(--halo-active, 0);
+  transition: opacity 0.7s ease;
+  will-change: opacity;
+}
+
+/* Disable both layers on touch/coarse-pointer devices and reduced-motion */
+@media (pointer: coarse) {
+  .hero__halo,
+  .hero__grid-cursor {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__halo,
+  .hero__grid-cursor {
+    display: none;
+  }
+}
+
+.hero__container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Two-column Asymmetric Layout */
+.hero__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero__layout {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1240px) {
+  .hero__layout {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+  }
+}
+
+/* Left Column: Content */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+/* Editorial Positioning Badge */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 6px 14px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 9999px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hero__badge:hover {
+  border-color: var(--accent-electric);
+  box-shadow: 0 2px 12px rgba(0, 82, 255, 0.1);
+}
+
+.hero__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-electric);
+  box-shadow: 0 0 8px var(--accent-electric);
+  animation: pulse-dot 2.2s infinite ease-in-out;
+}
+
+.hero__badge-kicker {
+  font-weight: 700;
+  color: var(--accent-electric);
+}
+
+.hero__badge-divider {
+  color: var(--border-default);
+}
+
+.hero__badge-category {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Main Headline */
+.hero__title {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 3.6vw + 0.5rem, 4.25rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-break: normal;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .hero__title {
+    margin-bottom: 22px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1240px) {
+  .hero__title {
+    font-size: 2.75rem;
+    line-height: 1.1;
+  }
+  .hero__lead {
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+    max-width: 520px;
+  }
+  .hero__actions {
+    margin-bottom: 32px;
+  }
+}
+
+.hero__title-accent {
+  color: var(--accent-electric);
+  display: block;
+  letter-spacing: -0.035em;
+}
+
+/* Value Proposition Paragraph */
+.hero__lead {
+  font-size: clamp(1.025rem, 1.1vw + 0.25rem, 1.25rem);
+  line-height: 1.62;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  max-width: 580px;
+}
+
+@media (min-width: 768px) {
+  .hero__lead {
+    margin-bottom: 36px;
+  }
+}
+
+/* Action Group */
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+@media (min-width: 540px) {
+  .hero__actions {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__actions {
+    margin-bottom: 44px;
+  }
+}
+
+/* Primary CTA Button */
+.hero__cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 28px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--accent-electric);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border-radius: 10px;
+  box-shadow: var(--shadow-accent);
+  transition: 
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  min-height: 52px;
+}
+
+@media (min-width: 540px) {
+  .hero__cta-primary {
+    width: auto;
+  }
+}
+
+.hero__cta-primary:hover {
+  background-color: var(--accent-electric-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -4px rgba(0, 82, 255, 0.4);
+}
+
+.hero__cta-primary:active {
+  background-color: var(--accent-electric-active);
+  transform: translateY(0);
+}
+
+.hero__cta-icon {
+  transition: transform var(--transition-fast);
+}
+
+.hero__cta-primary:hover .hero__cta-icon {
+  transform: translate(2px, -2px);
+}
+
+/* Secondary CTA Button */
+.hero__cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 24px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-size: 0.98rem;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: 
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+  min-height: 52px;
+}
+
+@media (min-width: 540px) {
+  .hero__cta-secondary {
+    width: auto;
+  }
+}
+
+.hero__cta-primary:hover {
+  background-color: var(--accent-electric-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -4px rgba(0, 82, 255, 0.4);
+}
+
+.hero__cta-primary:active {
+  background-color: var(--accent-electric-active);
+  transform: translateY(0);
+}
+
+.hero__cta-icon {
+  transition: transform var(--transition-fast);
+}
+
+.hero__cta-primary:hover .hero__cta-icon {
+  transform: translate(2px, -2px);
+}
+
+/* Secondary CTA Button */
+.hero__cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 24px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-size: 0.98rem;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: 
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+  min-height: 52px;
+}
+
+.hero__cta-secondary:hover {
+  background-color: #ffffff;
+  border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.hero__cta-secondary-icon {
+  color: var(--text-muted);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.hero__cta-secondary:hover .hero__cta-secondary-icon {
+  color: var(--accent-electric);
+  transform: translateY(2px);
+}
+
+/* Proof / Telemetry Metrics */
+.hero__metrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: 100%;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-hairline);
+}
+
+@media (min-width: 540px) {
+  .hero__metrics {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+
+.hero__metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 14px;
+  background-color: var(--bg-surface-translucent);
+  border: 1px solid var(--border-hairline);
+  border-left: 3px solid var(--accent-electric);
+  border-radius: 0 8px 8px 0;
+}
+
+@media (min-width: 540px) {
+  .hero__metric-item {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+  }
+}
+
+.hero__metric-value {
+  font-family: var(--font-sans);
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.hero__metric-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero__metric-label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.hero__metric-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+/* Right Column: Visual */
+.hero__visual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,179 @@
+/* ==========================================================================
+   NORDECH — Design System & Global Styles
+   Art Direction: Premium B2B Tech Agency / Ice Gray & Electric Blue
+   ========================================================================== */
+
+:root {
+  /* Color Palette — Light, Minimal, Architectural */
+  --bg-primary: #F8FAFD;
+  --bg-secondary: #F0F4F9;
+  --bg-tertiary: #E8EEF5;
+  --bg-surface: #FFFFFF;
+  --bg-surface-translucent: rgba(255, 255, 255, 0.82);
+  --bg-surface-elevated: rgba(255, 255, 255, 0.94);
+  
+  /* Electric Blue Accent & States */
+  --accent-electric: #0052FF;
+  --accent-electric-hover: #003CD6;
+  --accent-electric-active: #002DB3;
+  --accent-electric-light: rgba(0, 82, 255, 0.07);
+  --accent-electric-subtle: rgba(0, 82, 255, 0.14);
+  --accent-electric-glow: rgba(0, 82, 255, 0.28);
+  
+  /* Secondary Accents */
+  --accent-cyan: #00D2FF;
+  --accent-cyan-light: rgba(0, 210, 255, 0.12);
+  --accent-emerald: #10B981;
+  --accent-emerald-light: rgba(16, 185, 129, 0.12);
+
+  /* Typography / Text Colors */
+  --text-primary: #0A0F1D;     /* Deep obsidian / crisp slate */
+  --text-secondary: #475569;   /* High-contrast slate */
+  --text-muted: #64748B;       /* Secondary details */
+  --text-tertiary: #94A3B8;    /* Monospace / metadata */
+  --text-on-accent: #FFFFFF;
+
+  /* Borders & Hairline Dividers */
+  --border-hairline: rgba(15, 23, 42, 0.06);
+  --border-subtle: rgba(15, 23, 42, 0.1);
+  --border-default: rgba(15, 23, 42, 0.16);
+  --border-accent: rgba(0, 82, 255, 0.35);
+  --border-accent-strong: #0052FF;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(10, 15, 29, 0.04), 0 1px 2px rgba(10, 15, 29, 0.02);
+  --shadow-md: 0 4px 16px -2px rgba(10, 15, 29, 0.06), 0 2px 6px -1px rgba(10, 15, 29, 0.03);
+  --shadow-lg: 0 16px 36px -4px rgba(10, 15, 29, 0.08), 0 6px 16px -2px rgba(10, 15, 29, 0.04);
+  --shadow-accent: 0 10px 28px -4px rgba(0, 82, 255, 0.32);
+
+  /* Typography Stacks */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Layout */
+  --container-max: 1360px;
+  --header-height: 76px;
+  --header-height-mobile: 68px;
+
+  /* Transitions */
+  --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Box sizing & basic resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  /* Faint architectural subtle grid */
+  background-image: 
+    radial-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(to right, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
+  background-size: 32px 32px, 128px 128px;
+  background-position: 0 0, 0 0;
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Skip link for accessibility */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--accent-electric);
+  color: #fff;
+  padding: 10px 18px;
+  font-weight: 600;
+  border-radius: 6px;
+  z-index: 9999;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-to-content:focus {
+  top: 16px;
+  outline: 2px solid #000;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Base interactive elements */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent-electric);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Utility container */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 0 48px;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
