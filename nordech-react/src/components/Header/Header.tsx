@@ -8,9 +8,9 @@ interface NavLink {
 
 const NAV_LINKS: NavLink[] = [
   { label: 'Servicios', href: '#servicios' },
-  { label: 'Infraestructura', href: '#infraestructura' },
-  { label: 'Ciberseguridad', href: '#seguridad' },
-  { label: 'Método', href: '#metodo' },
+  { label: 'IA Aplicada', href: '#ia' },
+  { label: 'Enfoque', href: '#propuesta' },
+  { label: 'Contacto', href: '#contacto' },
 ]
 
 export function Header() {

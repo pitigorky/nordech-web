@@ -3,112 +3,159 @@ import './Services.css'
 
 interface ServiceItem {
   id: string
-  anchorId?: string
   index: string
-  code: string
-  category: string
   title: string
-  businessValue: string
+  short: string
   description: string
   capabilities: string[]
+  featured?: boolean
+  icon: React.ReactNode
 }
+
+// ── SVG Icons ────────────────────────────────────────────────────────────────
+
+const IconGestion = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <rect x="2" y="2" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.85" />
+    <rect x="11" y="2" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.85" />
+    <rect x="2" y="11" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.85" />
+    <rect x="11" y="11" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.85" />
+  </svg>
+)
+
+const IconInfraestructura = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <rect x="2" y="3" width="16" height="4" rx="1.5" fill="currentColor" opacity="0.85" />
+    <rect x="2" y="8.5" width="16" height="4" rx="1.5" fill="currentColor" opacity="0.85" />
+    <rect x="2" y="14" width="16" height="3" rx="1.5" fill="currentColor" opacity="0.85" />
+  </svg>
+)
+
+const IconCloud = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path
+      d="M15.5 8.5a3.5 3.5 0 0 0-6.8-1.1A3 3 0 1 0 5 13.5h10a3 3 0 0 0 .5-5.95V8.5z"
+      fill="currentColor"
+      opacity="0.85"
+    />
+  </svg>
+)
+
+const IconCiberseguridad = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path
+      d="M10 2L3 5v5c0 4.1 2.9 7.9 7 9 4.1-1.1 7-4.9 7-9V5L10 2z"
+      fill="currentColor"
+      opacity="0.85"
+    />
+  </svg>
+)
+
+const IconBackup = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path
+      d="M10 3a7 7 0 1 0 6.32 4"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.85"
+    />
+    <path d="M16 3v4h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.85" />
+  </svg>
+)
+
+const IconIA = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path d="M10 2l1.5 4.5L16 8l-4.5 1.5L10 14l-1.5-4.5L4 8l4.5-1.5L10 2z" fill="currentColor" opacity="0.9" />
+    <path d="M16 13l0.8 2.2L19 16l-2.2.8L16 19l-.8-2.2L13 16l2.2-.8L16 13z" fill="currentColor" opacity="0.7" />
+    <path d="M4 2l.6 1.4L6 4l-1.4.6L4 6l-.6-1.4L2 4l1.4-.6L4 2z" fill="currentColor" opacity="0.6" />
+  </svg>
+)
+
+// ── Data ──────────────────────────────────────────────────────────────────────
 
 const SERVICES: ServiceItem[] = [
   {
     id: 'gestion-it',
     index: '01',
-    code: 'SRV-01 // MANAGEMENT',
-    category: 'DIRECCIÓN TÉCNICA',
     title: 'Gestión IT Externa',
-    businessValue:
-      'Dispones de la solidez y criterio de un departamento IT completo sin soportar los costes fijos ni la gestión de contratarlo internamente.',
+    short: 'Tu departamento IT completo, sin los costes de tenerlo internamente.',
     description:
       'Asumimos la responsabilidad operativa de tu tecnología: soporte a usuarios, gestión centralizada de accesos y licencias, relación con proveedores tecnológicos y diseño del plan de evolución técnica de la empresa.',
     capabilities: [
       'Soporte avanzado a usuarios',
-      'Gestión de proveedores tecnológicos',
-      'Inventario y control de activos',
+      'Gestión de proveedores',
+      'Inventario de activos',
       'Dirección técnica y roadmap IT',
     ],
+    icon: <IconGestion />,
   },
   {
     id: 'infraestructura',
-    anchorId: 'infraestructura',
     index: '02',
-    code: 'SRV-02 // SYSTEMS',
-    category: 'INFRAESTRUCTURA',
     title: 'Infraestructura y Sistemas',
-    businessValue:
-      'Tus sistemas, redes y servidores funcionan de manera previsible, rápida y estable, evitando caídas que paralicen las operaciones.',
+    short: 'Redes, servidores y conectividad que no fallan.',
     description:
       'Diseñamos, desplegamos y mantenemos la infraestructura de red, servidores locales o remotos, virtualización, Wi-Fi profesional y enlaces seguros (VPN), con monitorización de disponibilidad.',
     capabilities: [
       'Servidores físicos y virtualizados',
-      'Redes corporativas y Wi-Fi empresarial',
+      'Redes corporativas y Wi-Fi',
       'VPN seguras para trabajo remoto',
       'Monitorización de infraestructura',
     ],
+    icon: <IconInfraestructura />,
   },
   {
     id: 'cloud-m365',
     index: '03',
-    code: 'SRV-03 // CLOUD',
-    category: 'CLOUD & COLABORACIÓN',
     title: 'Cloud y Microsoft 365',
-    businessValue:
-      'Tu equipo trabaja con seguridad desde cualquier lugar, con datos sincronizados y licencias optimizadas sin pagar de más.',
+    short: 'Tu equipo trabaja desde cualquier lugar, con seguridad.',
     description:
-      'Especialistas en la administración y securización del ecosistema Microsoft 365 (Entra ID, Exchange, SharePoint, OneDrive, Intune, Defender), así como migraciones y despliegues en nubes públicas (Azure, AWS).',
+      'Especialistas en la administración y securización del ecosistema Microsoft 365 (Entra ID, Exchange, SharePoint, OneDrive, Intune, Defender), así como migraciones y despliegues en nubes públicas.',
     capabilities: [
-      'Administración experta de Microsoft 365',
-      'Gestión de identidades con Entra ID',
+      'Administración de Microsoft 365',
+      'Gestión de identidades Entra ID',
       'Migración de correo y archivos',
-      'Optimización de costes cloud (FinOps)',
+      'Optimización de costes cloud',
     ],
+    icon: <IconCloud />,
   },
   {
     id: 'ciberseguridad',
-    anchorId: 'seguridad',
     index: '04',
-    code: 'SRV-04 // SECURITY',
-    category: 'CIBERSEGURIDAD',
-    title: 'Ciberseguridad Perimetral y de Puesto',
-    businessValue:
-      'Protegemos la información sensible de tu negocio frente a intrusiones, ransomware y fraudes que comprometan tu reputación o finanzas.',
+    title: 'Ciberseguridad',
+    short: 'Protección activa frente a amenazas, ransomware y accesos no autorizados.',
     description:
       'Implantación de defensas avanzadas en puestos de trabajo y servidores (EDR), autenticación multifactor (MFA), bastionado de configuraciones, auditorías de permisos y concienciación técnica del equipo.',
     capabilities: [
-      'Protección avanzada en puestos (EDR/XDR)',
+      'Protección EDR/XDR en puestos',
       'Autenticación multifactor y Zero-Trust',
       'Auditoría y control de accesos',
       'Bastionado de sistemas y firewalls',
     ],
+    icon: <IconCiberseguridad />,
   },
   {
     id: 'backup-resiliencia',
     index: '05',
-    code: 'SRV-05 // RESILIENCE',
-    category: 'CONTINUIDAD DE NEGOCIO',
-    title: 'Backup y Continuidad de Negocio',
-    businessValue:
-      'Garantía real de que, ante cualquier desastre técnico o incidente de seguridad, tu empresa podrá recuperar sus datos y volver a operar.',
+    title: 'Backup y Continuidad',
+    short: 'Copias inmutables y planes de contingencia para que ningún incidente pare tu negocio.',
     description:
       'Diseño y gestión de políticas de backup 3-2-1 con copias inmutables e independientes frente al ransomware, custodias externas cifradas y simulacros periódicos de restauración.',
     capabilities: [
       'Copias inmutables anti-ransomware',
       'Estrategia de respaldo híbrido 3-2-1',
       'Pruebas periódicas de restauración',
-      'Planes de contingencia operativa (DRP)',
+      'Planes de contingencia (DRP)',
     ],
+    icon: <IconBackup />,
   },
   {
     id: 'automatizacion-ia',
     index: '06',
-    code: 'SRV-06 // AUTOMATION',
-    category: 'EFICIENCIA E INNOVACIÓN',
-    title: 'Automatización e IA Aplicada',
-    businessValue:
-      'Reduces tiempos operativos y errores manuales automatizando tareas rutinarias y conectando plataformas clave del negocio.',
+    title: 'Automatización e IA',
+    short: 'Automatizamos tareas y aplicamos IA de forma práctica a tus procesos.',
     description:
       'Identificamos cuellos de botella en procesos de trabajo y aplicamos automatizaciones prácticas: flujos entre plataformas, sincronización de bases de datos, generación de informes y asistentes inteligentes internos.',
     capabilities: [
@@ -117,14 +164,19 @@ const SERVICES: ServiceItem[] = [
       'Alertas preventivas automatizadas',
       'Asistentes internos con IA aplicada',
     ],
+    featured: true,
+    icon: <IconIA />,
   },
 ]
 
-export function Services() {
-  const [activeFilter, setActiveFilter] = useState<string>('all')
+// ── Component ─────────────────────────────────────────────────────────────────
 
-  const filteredServices =
-    activeFilter === 'all' ? SERVICES : SERVICES.filter((s) => s.id === activeFilter)
+export function Services() {
+  const [activeCard, setActiveCard] = useState<string | null>(null)
+
+  const handleCardClick = (id: string) => {
+    setActiveCard((prev) => (prev === id ? null : id))
+  }
 
   return (
     <section id="servicios" className="services" aria-labelledby="services-heading">
@@ -133,94 +185,54 @@ export function Services() {
         <div className="services__header">
           <div className="services__kicker">
             <span className="services__kicker-num">02</span>
-            <span className="services__kicker-divider" aria-hidden="true">/</span>
+            <span>/</span>
             <span>CAPACIDADES Y SERVICIOS</span>
           </div>
-
           <h2 id="services-heading" className="services__title">
             Todo lo que tu IT necesita.
             <span className="services__title-sub">Con un único equipo responsable.</span>
           </h2>
-
           <p className="services__intro">
-            No creemos en acumular herramientas complejas. Aportamos criterio técnico para que cada
-            inversión tecnológica tenga un impacto directo en la productividad, la seguridad y la
-            continuidad de tu negocio.
+            Gestión, infraestructura, seguridad, cloud y automatización. Nos responsabilizamos de
+            que tu tecnología funcione.
           </p>
         </div>
 
-        {/* Quick Filter Bar (Sin duplicidad: filtra o muestra todo sin duplicar paneles) */}
-        <div className="services__filter-bar" role="tablist" aria-label="Filtrar áreas de servicio">
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeFilter === 'all'}
-            className={`services__filter-btn ${activeFilter === 'all' ? 'is-active' : ''}`}
-            onClick={() => setActiveFilter('all')}
-          >
-            <span>Todas las áreas</span>
-            <span className="services__filter-count">6</span>
-          </button>
-
-          {SERVICES.map((s) => {
-            const isActive = activeFilter === s.id
+        {/* Cards Grid */}
+        <div className="services__grid" aria-label="Catálogo de servicios IT">
+          {SERVICES.map((service) => {
+            const isActive = activeCard === service.id
             return (
-              <button
-                key={s.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                className={`services__filter-btn ${isActive ? 'is-active' : ''}`}
-                onClick={() => setActiveFilter(s.id)}
+              <article
+                key={service.id}
+                className={[
+                  'service-card',
+                  service.featured ? 'service-card--featured' : '',
+                  isActive ? 'is-active' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                onClick={() => handleCardClick(service.id)}
+                aria-expanded={isActive}
               >
-                <span className="services__filter-index">{s.index}</span>
-                <span>{s.title}</span>
-              </button>
+                <div className="service-card__icon">{service.icon}</div>
+                <div className="service-card__index">{service.index}</div>
+                <h3 className="service-card__title">{service.title}</h3>
+                <p className="service-card__short">{service.short}</p>
+
+                <div className="service-card__body" aria-hidden={!isActive}>
+                  <p className="service-card__desc">{service.description}</p>
+                  <div className="service-card__caps">
+                    {service.capabilities.map((cap) => (
+                      <span key={cap} className="service-card__cap">
+                        {cap}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
             )
           })}
-        </div>
-
-        {/* 6 Comprehensive Service Cards Grid (Una sola fuente de verdad, sin fichas duplicadas) */}
-        <div className="services__grid" aria-label="Catálogo completo de servicios IT">
-          {filteredServices.map((service) => (
-            <article
-              key={service.id}
-              id={service.anchorId}
-              className="services__card"
-            >
-              <div className="services__card-header">
-                <div className="services__card-meta">
-                  <span className="services__card-index">{service.index}</span>
-                  <span className="services__card-code">{service.code}</span>
-                </div>
-                <span className="services__card-category">{service.category}</span>
-              </div>
-
-              <h3 className="services__card-title">{service.title}</h3>
-
-              {/* Value to Business Callout */}
-              <div className="services__card-value">
-                <div className="services__card-value-header">
-                  <span className="services__card-value-icon" aria-hidden="true">★</span>
-                  <span className="services__card-value-label">QUÉ APORTA A TU NEGOCIO</span>
-                </div>
-                <p className="services__card-value-text">{service.businessValue}</p>
-              </div>
-
-              <p className="services__card-desc">{service.description}</p>
-
-              <div className="services__card-footer">
-                <span className="services__card-cap-label">INCLUYE:</span>
-                <div className="services__card-caps">
-                  {service.capabilities.map((cap) => (
-                    <span key={cap} className="services__card-cap-pill">
-                      {cap}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
         </div>
       </div>
     </section>
