@@ -17,6 +17,7 @@ interface FormErrors {
 
 const TOPIC_CHIPS = [
   'Gestión IT integral',
+  'Consultoría e Integración de IA',
   'Microsoft 365 y Cloud',
   'Ciberseguridad y backups',
   'Auditoría técnica inicial',
@@ -97,28 +98,27 @@ export function Contact() {
           {/* Left Column: Context & Editorial */}
           <div className="contact__info">
             <div className="contact__kicker">
-              <span className="contact__kicker-num">06</span>
+              <span className="contact__kicker-num">05</span>
               <span className="contact__kicker-divider" aria-hidden="true">/</span>
               <span>CONVERSACIÓN INICIAL</span>
             </div>
 
             <h2 id="contact-heading" className="contact__title">
-              Hablemos de tu IT.
+              ¿Hablamos de tu IT?
               <span className="contact__title-sub">Sin compromiso ni discursos comerciales.</span>
             </h2>
 
             <p className="contact__intro">
-              Cuéntanos en qué punto se encuentra tu empresa, qué te preocupa de tu tecnología actual
-              y qué objetivos tienes para los próximos meses. Te responderá un responsable técnico,
-              no un comercial con un guion predefinido.
+              Cuéntanos qué necesita tu empresa y vemos cómo podemos ayudarte. Te responderá
+              un responsable técnico, no un comercial con un guion predefinido.
             </p>
 
             {/* Direct Coordinates & Channels */}
             <div className="contact__channels">
               <div className="contact__channel-item">
                 <span className="contact__channel-label">CORREO DIRECTO</span>
-                <a href="mailto:contacto@nordech.es" className="contact__channel-value">
-                  contacto@nordech.es
+                <a href="mailto:info@nordech.es" className="contact__channel-value">
+                  info@nordech.es
                 </a>
               </div>
 
@@ -313,7 +313,7 @@ export function Contact() {
 
                 {/* Submit Action */}
                 <button type="submit" className="contact__submit-btn">
-                  <span>Hablemos de tu IT</span>
+                  <span>Contactar</span>
                   <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                     <path
                       d="M3 11L11 3M11 3H4.5M11 3V9.5"

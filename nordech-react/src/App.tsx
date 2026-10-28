@@ -16,9 +16,9 @@ export default function App() {
       <Header />
       <main id="inicio">
         <Hero />
+        <ValueProp />
         <Services />
         <AISection />
-        <ValueProp />
         <Contact />
       </main>
       <Footer />

@@ -81,7 +81,7 @@ export function Hero() {
               <span className="hero__badge-dot" aria-hidden="true"></span>
               <span className="hero__badge-kicker">PARTNER IT EXTERNO</span>
               <span className="hero__badge-divider" aria-hidden="true">/</span>
-              <span className="hero__badge-category">SISTEMAS · CLOUD · SEGURIDAD · IA</span>
+              <span className="hero__badge-category">SISTEMAS · CLOUD · CIBERSEGURIDAD · IA</span>
             </div>
 
             {/* Headline */}
@@ -98,7 +98,7 @@ export function Hero() {
             {/* Action Group */}
             <div className="hero__actions">
               <a href="#contacto" className="hero__cta-primary">
-                <span>Hablemos</span>
+                <span>Contacta con nosotros</span>
                 <svg
                   className="hero__cta-icon"
                   width="16"

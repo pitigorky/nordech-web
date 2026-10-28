@@ -15,61 +15,69 @@ interface ServiceItem {
 // ── SVG Icons ────────────────────────────────────────────────────────────────
 
 const IconGestion = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-    <rect x="2" y="2" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.85" />
-    <rect x="11" y="2" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.85" />
-    <rect x="2" y="11" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.85" />
-    <rect x="11" y="11" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.85" />
+  <svg width="22" height="22" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <rect x="2" y="2" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.9" />
+    <rect x="11" y="2" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.9" />
+    <rect x="2" y="11" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.9" />
+    <rect x="11" y="11" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.9" />
   </svg>
 )
 
 const IconInfraestructura = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-    <rect x="2" y="3" width="16" height="4" rx="1.5" fill="currentColor" opacity="0.85" />
-    <rect x="2" y="8.5" width="16" height="4" rx="1.5" fill="currentColor" opacity="0.85" />
-    <rect x="2" y="14" width="16" height="3" rx="1.5" fill="currentColor" opacity="0.85" />
+  <svg width="22" height="22" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <rect x="2" y="3" width="16" height="4" rx="1.5" fill="currentColor" opacity="0.9" />
+    <rect x="2" y="8.5" width="16" height="4" rx="1.5" fill="currentColor" opacity="0.9" />
+    <rect x="2" y="14" width="16" height="3" rx="1.5" fill="currentColor" opacity="0.9" />
   </svg>
 )
 
 const IconCloud = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+  <svg width="22" height="22" viewBox="0 0 20 20" fill="none" aria-hidden="true">
     <path
       d="M15.5 8.5a3.5 3.5 0 0 0-6.8-1.1A3 3 0 1 0 5 13.5h10a3 3 0 0 0 .5-5.95V8.5z"
       fill="currentColor"
-      opacity="0.85"
+      opacity="0.9"
     />
   </svg>
 )
 
 const IconCiberseguridad = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+  <svg width="22" height="22" viewBox="0 0 20 20" fill="none" aria-hidden="true">
     <path
       d="M10 2L3 5v5c0 4.1 2.9 7.9 7 9 4.1-1.1 7-4.9 7-9V5L10 2z"
       fill="currentColor"
-      opacity="0.85"
+      opacity="0.9"
     />
   </svg>
 )
 
 const IconBackup = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+  <svg width="22" height="22" viewBox="0 0 20 20" fill="none" aria-hidden="true">
     <path
       d="M10 3a7 7 0 1 0 6.32 4"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       fill="none"
-      opacity="0.85"
+      opacity="0.9"
     />
-    <path d="M16 3v4h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.85" />
+    <path
+      d="M16 3v4h-4"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+      opacity="0.9"
+    />
   </svg>
 )
 
 const IconIA = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-    <path d="M10 2l1.5 4.5L16 8l-4.5 1.5L10 14l-1.5-4.5L4 8l4.5-1.5L10 2z" fill="currentColor" opacity="0.9" />
-    <path d="M16 13l0.8 2.2L19 16l-2.2.8L16 19l-.8-2.2L13 16l2.2-.8L16 13z" fill="currentColor" opacity="0.7" />
-    <path d="M4 2l.6 1.4L6 4l-1.4.6L4 6l-.6-1.4L2 4l1.4-.6L4 2z" fill="currentColor" opacity="0.6" />
+  <svg width="22" height="22" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path d="M10 2l1.5 4.5L16 8l-4.5 1.5L10 14l-1.5-4.5L4 8l4.5-1.5L10 2z" fill="currentColor" opacity="0.95" />
+    <path d="M16 13l0.8 2.2L19 16l-2.2.8L16 19l-.8-2.2L13 16l2.2-.8L16 13z" fill="currentColor" opacity="0.75" />
+    <path d="M4 2l.6 1.4L6 4l-1.4.6L4 6l-.6-1.4L2 4l1.4-.6L4 2z" fill="currentColor" opacity="0.65" />
   </svg>
 )
 
@@ -110,7 +118,7 @@ const SERVICES: ServiceItem[] = [
     id: 'cloud-m365',
     index: '03',
     title: 'Cloud y Microsoft 365',
-    short: 'Tu equipo trabaja desde cualquier lugar, con seguridad.',
+    short: 'Tu equipo trabaja desde cualquier lugar, con total seguridad.',
     description:
       'Especialistas en la administración y securización del ecosistema Microsoft 365 (Entra ID, Exchange, SharePoint, OneDrive, Intune, Defender), así como migraciones y despliegues en nubes públicas.',
     capabilities: [
@@ -172,10 +180,18 @@ const SERVICES: ServiceItem[] = [
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export function Services() {
-  const [activeCard, setActiveCard] = useState<string | null>(null)
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set())
 
-  const handleCardClick = (id: string) => {
-    setActiveCard((prev) => (prev === id ? null : id))
+  const toggleCard = (id: string) => {
+    setExpandedIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) {
+        next.delete(id)
+      } else {
+        next.add(id)
+      }
+      return next
+    })
   }
 
   return (
@@ -184,8 +200,8 @@ export function Services() {
         {/* Header */}
         <div className="services__header">
           <div className="services__kicker">
-            <span className="services__kicker-num">02</span>
-            <span>/</span>
+            <span className="services__kicker-num">03</span>
+            <span className="services__kicker-divider" aria-hidden="true">/</span>
             <span>CAPACIDADES Y SERVICIOS</span>
           </div>
           <h2 id="services-heading" className="services__title">
@@ -194,40 +210,73 @@ export function Services() {
           </h2>
           <p className="services__intro">
             Gestión, infraestructura, seguridad, cloud y automatización. Nos responsabilizamos de
-            que tu tecnología funcione.
+            que tu tecnología funcione sin interrupciones.
           </p>
         </div>
 
-        {/* Cards Grid */}
+        {/* Compact & Expandable Cards Grid */}
         <div className="services__grid" aria-label="Catálogo de servicios IT">
           {SERVICES.map((service) => {
-            const isActive = activeCard === service.id
+            const isExpanded = expandedIds.has(service.id)
+
             return (
               <article
                 key={service.id}
-                className={[
-                  'service-card',
-                  service.featured ? 'service-card--featured' : '',
-                  isActive ? 'is-active' : '',
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-                onClick={() => handleCardClick(service.id)}
-                aria-expanded={isActive}
+                className={`service-card ${service.featured ? 'service-card--featured' : ''} ${isExpanded ? 'is-expanded' : ''}`}
               >
-                <div className="service-card__icon">{service.icon}</div>
-                <div className="service-card__index">{service.index}</div>
+                {/* Visual Top Bar: Icon, Index & Node Signal */}
+                <div className="service-card__top">
+                  <div className="service-card__icon-wrap">
+                    <div className="service-card__icon">{service.icon}</div>
+                    <span className="service-card__signal" aria-hidden="true" />
+                  </div>
+                  <span className="service-card__index">{service.index}</span>
+                </div>
+
+                {/* Core Heading & One-Sentence Benefit */}
                 <h3 className="service-card__title">{service.title}</h3>
                 <p className="service-card__short">{service.short}</p>
 
-                <div className="service-card__body" aria-hidden={!isActive}>
-                  <p className="service-card__desc">{service.description}</p>
-                  <div className="service-card__caps">
-                    {service.capabilities.map((cap) => (
-                      <span key={cap} className="service-card__cap">
-                        {cap}
-                      </span>
-                    ))}
+                {/* Accessible Expansion Trigger */}
+                <button
+                  type="button"
+                  className="service-card__toggle-btn"
+                  aria-expanded={isExpanded}
+                  aria-controls={`service-detail-${service.id}`}
+                  onClick={() => toggleCard(service.id)}
+                >
+                  <span className="service-card__toggle-label">
+                    {isExpanded ? 'Menos detalles' : 'Ver alcance y capacidades'}
+                  </span>
+                  <span className={`service-card__toggle-icon ${isExpanded ? 'is-open' : ''}`} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2.5 4.5L6 8L9.5 4.5"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </button>
+
+                {/* Expandable Technical Detail Panel */}
+                <div
+                  id={`service-detail-${service.id}`}
+                  className={`service-card__drawer ${isExpanded ? 'is-open' : ''}`}
+                  aria-hidden={!isExpanded}
+                >
+                  <div className="service-card__drawer-inner">
+                    <p className="service-card__desc">{service.description}</p>
+                    <div className="service-card__caps" aria-label="Capacidades técnicas">
+                      {service.capabilities.map((cap) => (
+                        <span key={cap} className="service-card__cap">
+                          <span className="service-card__cap-dot" aria-hidden="true" />
+                          {cap}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </article>
