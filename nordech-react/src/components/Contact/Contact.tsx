@@ -15,6 +15,8 @@ interface FormErrors {
   message?: string
 }
 
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
+
 const TOPIC_CHIPS = [
   'Gestión IT integral',
   'Consultoría e Integración de IA',
@@ -31,8 +33,10 @@ export function Contact() {
     message: '',
   })
 
+  const [honeypot, setHoneypot] = useState<string>('')
   const [errors, setErrors] = useState<FormErrors>({})
-  const [isValidated, setIsValidated] = useState<boolean>(false)
+  const [status, setStatus] = useState<SubmitStatus>('idle')
+  const [serverError, setServerError] = useState<string>('')
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {}
@@ -62,9 +66,13 @@ export function Contact() {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
 
-    // Clear error for that field on change
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
+    }
+
+    if (status === 'error') {
+      setStatus('idle')
+      setServerError('')
     }
   }
 
@@ -77,18 +85,61 @@ export function Contact() {
     })
   }
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (validate()) {
-      // Form validation passed. As instructed, we do not simulate a fake sent transmission;
-      // instead, we confirm the UI validation state and leave the payload prepared for the endpoint.
-      setIsValidated(true)
+    if (!validate()) {
+      return
+    }
+
+    setStatus('submitting')
+    setServerError('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          message: formData.message,
+          _gotcha: honeypot,
+        }),
+      })
+
+      const data = await response.json().catch(() => ({}))
+
+      if (response.ok && data.ok) {
+        setStatus('success')
+      } else {
+        setStatus('error')
+        setServerError(
+          data.error ||
+            'No se ha podido entregar el mensaje en este momento. Por favor, reintenta el envío o contáctanos directamente.'
+        )
+      }
+    } catch {
+      setStatus('error')
+      setServerError(
+        'Error de conectividad al procesar la solicitud. Comprueba tu conexión o escríbenos a info@nordech.es.'
+      )
     }
   }
 
-  const handleResetValidation = () => {
-    setIsValidated(false)
+  const handleResetForm = () => {
+    setFormData({
+      name: '',
+      company: '',
+      email: '',
+      message: '',
+    })
+    setHoneypot('')
+    setErrors({})
+    setStatus('idle')
+    setServerError('')
   }
 
   return (
@@ -148,56 +199,70 @@ export function Contact() {
           <div className="contact__form-card">
             <div className="contact__form-header">
               <span className="contact__form-kicker">FORMULARIO DE CONTACTO</span>
-              <span className="contact__form-state-pill">RESPUESTA DIRECTA</span>
+              <span className="contact__form-state-pill">
+                {status === 'submitting'
+                  ? 'ENVIANDO...'
+                  : status === 'success'
+                  ? 'ENTREGADO'
+                  : 'RESPUESTA DIRECTA'}
+              </span>
             </div>
 
-            {isValidated ? (
+            {status === 'success' ? (
               <div className="contact__confirmed" role="status" aria-live="polite">
                 <div className="contact__confirmed-badge">
                   <span className="contact__confirmed-icon" aria-hidden="true">✓</span>
-                  <strong>Validación de datos correcta</strong>
+                  <strong>Consulta enviada correctamente</strong>
                 </div>
 
                 <div className="contact__confirmed-notice">
-                  <span className="contact__confirmed-notice-tag">AVISO TÉCNICO</span>
+                  <span className="contact__confirmed-notice-tag">RECEPCIÓN CONFIRMADA</span>
                   <p>
-                    Los datos ({formData.name} · {formData.company} · {formData.email}) han superado
-                    la validación de la interfaz. La integración telemática con el servidor de correo o API
-                    está pendiente de configuración externa.
+                    Gracias, <strong>{formData.name}</strong>. Hemos recibido tu mensaje para{' '}
+                    <strong>{formData.company}</strong> directamente en nuestro buzón{' '}
+                    <strong>info@nordech.es</strong>.
                   </p>
-                </div>
-
-                <div className="contact__confirmed-mailto-box">
-                  <span>Para enviar tu consulta ahora mismo por correo electrónico:</span>
-                  <a
-                    href={`mailto:contacto@nordech.es?subject=Contacto%20NORDECH%20-%20${encodeURIComponent(formData.company)}&body=${encodeURIComponent(
-                      `Nombre: ${formData.name}\nEmpresa: ${formData.company}\nEmail: ${formData.email}\n\nConsulta:\n${formData.message}`
-                    )}`}
-                    className="contact__confirmed-mailto-btn"
-                  >
-                    <span>Abrir en tu gestor de correo con datos completados</span>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                      <path
-                        d="M3 11L11 3M11 3H4.5M11 3V9.5"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
+                  <p className="contact__confirmed-followup">
+                    Un responsable técnico analizará tus necesidades y se pondrá en contacto contigo en{' '}
+                    <strong>{formData.email}</strong> en menos de 24 horas laborables.
+                  </p>
                 </div>
 
                 <button
                   type="button"
-                  className="contact__edit-btn"
-                  onClick={handleResetValidation}
+                  className="contact__reset-btn"
+                  onClick={handleResetForm}
                 >
-                  ← Volver a editar el formulario
+                  ← Enviar otra consulta
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="contact__form" noValidate>
+                {/* Honeypot anti-spam (invisible for humans) */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '-9999px',
+                    width: '1px',
+                    height: '1px',
+                    overflow: 'hidden',
+                    opacity: 0,
+                    pointerEvents: 'none',
+                  }}
+                  aria-hidden="true"
+                >
+                  <label htmlFor="_gotcha">Campo anti-spam</label>
+                  <input
+                    id="_gotcha"
+                    name="_gotcha"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
+
                 {/* Topic Selector Chips */}
                 <div className="contact__topics">
                   <span className="contact__topics-label">TEMAS DE INTERÉS FRECUENTES:</span>
@@ -208,12 +273,37 @@ export function Contact() {
                         type="button"
                         className="contact__topic-btn"
                         onClick={() => handleTopicClick(chip)}
+                        disabled={status === 'submitting'}
                       >
                         + {chip}
                       </button>
                     ))}
                   </div>
                 </div>
+
+                {/* Error Banner when dispatch fails */}
+                {status === 'error' && (
+                  <div className="contact__alert-box" role="alert">
+                    <div className="contact__alert-badge">
+                      <span className="contact__alert-icon" aria-hidden="true">!</span>
+                      <strong>No se pudo completar el envío telemático</strong>
+                    </div>
+                    <p className="contact__alert-msg">{serverError}</p>
+                    <div className="contact__alert-fallback">
+                      <span>Alternativa directa inmediata:</span>
+                      <a
+                        href={`mailto:info@nordech.es?subject=Contacto%20NORDECH%20-%20${encodeURIComponent(
+                          formData.company || 'Consulta'
+                        )}&body=${encodeURIComponent(
+                          `Nombre: ${formData.name}\nEmpresa: ${formData.company}\nEmail: ${formData.email}\n\nConsulta:\n${formData.message}`
+                        )}`}
+                        className="contact__alert-mailto-link"
+                      >
+                        Abrir consulta en tu gestor de correo (info@nordech.es) →
+                      </a>
+                    </div>
+                  </div>
+                )}
 
                 {/* Field: Name */}
                 <div className="contact__field">
@@ -226,6 +316,7 @@ export function Contact() {
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
+                    disabled={status === 'submitting'}
                     placeholder="Ej. Laura García"
                     className={`contact__input ${errors.name ? 'has-error' : ''}`}
                     aria-invalid={!!errors.name}
@@ -250,6 +341,7 @@ export function Contact() {
                     type="text"
                     value={formData.company}
                     onChange={handleChange}
+                    disabled={status === 'submitting'}
                     placeholder="Ej. Inversiones & Proyectos S.L."
                     className={`contact__input ${errors.company ? 'has-error' : ''}`}
                     aria-invalid={!!errors.company}
@@ -274,6 +366,7 @@ export function Contact() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
+                    disabled={status === 'submitting'}
                     placeholder="nombre@empresa.com"
                     className={`contact__input ${errors.email ? 'has-error' : ''}`}
                     aria-invalid={!!errors.email}
@@ -298,6 +391,7 @@ export function Contact() {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
+                    disabled={status === 'submitting'}
                     placeholder="Explícanos brevemente la situación actual de tu infraestructura, número de puestos o los retos técnicos que queréis abordar..."
                     className={`contact__textarea ${errors.message ? 'has-error' : ''}`}
                     aria-invalid={!!errors.message}
@@ -312,17 +406,40 @@ export function Contact() {
                 </div>
 
                 {/* Submit Action */}
-                <button type="submit" className="contact__submit-btn">
-                  <span>Contactar</span>
-                  <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path
-                      d="M3 11L11 3M11 3H4.5M11 3V9.5"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className={`contact__submit-btn ${status === 'submitting' ? 'contact__submit-btn--loading' : ''} ${status === 'error' ? 'contact__submit-btn--retry' : ''}`}
+                >
+                  {status === 'submitting' ? (
+                    <>
+                      <span className="contact__spinner" aria-hidden="true" />
+                      <span>Enviando consulta a info@nordech.es...</span>
+                    </>
+                  ) : status === 'error' ? (
+                    <>
+                      <span>Reintentar envío telemático</span>
+                      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path
+                          d="M13.65 2.35A8 8 0 1 0 16 8h-2a6 6 0 1 1-1.76-4.24l-2.24 2.24H16V2l-2.35.35z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      <span>Contactar</span>
+                      <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path
+                          d="M3 11L11 3M11 3H4.5M11 3V9.5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </>
+                  )}
                 </button>
 
                 <p className="contact__privacy-note">
