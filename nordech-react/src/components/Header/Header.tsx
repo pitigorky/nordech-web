@@ -7,10 +7,10 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
+  { label: 'Enfoque', href: '#propuesta' },
   { label: 'Servicios', href: '#servicios' },
-  { label: 'Infraestructura', href: '#infraestructura' },
-  { label: 'Ciberseguridad', href: '#seguridad' },
-  { label: 'Método', href: '#metodo' },
+  { label: 'IA Aplicada', href: '#ia' },
+  { label: 'Contacto', href: '#contacto' },
 ]
 
 export function Header() {
@@ -99,7 +99,7 @@ export function Header() {
             <span className="header__status-text">Sistemas activos</span>
           </div>
           <a href="#contacto" className="header__cta">
-            <span>Hablemos</span>
+            <span>Contacto</span>
             <svg
               className="header__cta-arrow"
               width="14"
@@ -181,18 +181,18 @@ export function Header() {
             <div className="header__mobile-info-divider" aria-hidden="true"></div>
             <div className="header__mobile-info-item">
               <small>COBERTURA TÉCNICA</small>
-              <strong>Sistemas · Cloud · Seguridad</strong>
+              <strong>Sistemas · Cloud · Seguridad · IA</strong>
             </div>
           </div>
 
-          {/* Sole Mobile CTA: Hablemos de tu IT */}
+          {/* Sole Mobile CTA: Contacta con nosotros */}
           <div className="header__mobile-cta-wrap">
             <a
               href="#contacto"
               className="header__mobile-cta"
               onClick={closeMobileMenu}
             >
-              <span>Hablemos de tu IT</span>
+              <span>Contacta con nosotros</span>
               <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path
                   d="M3 11L11 3M11 3H4.5M11 3V9.5"

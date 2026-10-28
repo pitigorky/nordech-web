@@ -1,0 +1,277 @@
+/* ==========================================================================
+   Value Proposition / Operational Approach — Trust, Closeness & Reality
+   ========================================================================== */
+
+.value-prop {
+  position: relative;
+  padding: 80px 0;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-hairline);
+}
+
+@media (min-width: 1100px) {
+  .value-prop {
+    padding: 96px 0;
+  }
+}
+
+/* ── Section Header ──────────────────────────────────────────────────────── */
+
+.value-prop__header {
+  max-width: 780px;
+  margin-bottom: 40px;
+}
+
+.value-prop__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-electric);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.value-prop__kicker-num {
+  font-weight: 800;
+}
+
+.value-prop__kicker-divider {
+  opacity: 0.4;
+}
+
+.value-prop__title {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 3.2vw + 0.5rem, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+
+.value-prop__intro {
+  font-size: clamp(1rem, 1.1vw + 0.2rem, 1.15rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ── 3 Pillars Grid ──────────────────────────────────────────────────────── */
+
+.value-prop__pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 880px) {
+  .value-prop__pillars-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.value-prop-card {
+  background: #ffffff;
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.value-prop-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 82, 255, 0.4);
+  box-shadow: 0 12px 28px -8px rgba(10, 16, 28, 0.1);
+}
+
+.value-prop-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  overflow: hidden;
+  background-color: #0F172A;
+}
+
+.value-prop-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.value-prop-card:hover .value-prop-card__img {
+  transform: scale(1.035);
+}
+
+.value-prop-card__tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(10, 16, 28, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #F8FAFC;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.value-prop-card__body {
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.value-prop-card__title {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.value-prop-card__desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 18px 0;
+  flex-grow: 1;
+}
+
+.value-prop-card__badge {
+  border-top: 1px solid var(--border-hairline);
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.value-prop-card__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-electric);
+  flex-shrink: 0;
+}
+
+.value-prop-card__badge-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ── Summary Bar & Commitments ───────────────────────────────────────────── */
+
+.value-prop__summary-bar {
+  background: #ffffff;
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 960px) {
+  .value-prop__summary-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.value-prop__commitments {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .value-prop__commitments {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 24px;
+  }
+}
+
+.value-prop__commitment-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.value-prop__check-icon {
+  width: 22px;
+  height: 22px;
+  background: var(--accent-electric-light);
+  border: 1px solid rgba(0, 82, 255, 0.2);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.value-prop__commitment-text {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.value-prop__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: var(--text-primary);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.value-prop__cta:hover {
+  background: var(--accent-electric);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px -4px rgba(0, 82, 255, 0.4);
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .value-prop-card,
+  .value-prop-card__img,
+  .value-prop__cta {
+    transition: none !important;
+    transform: none !important;
+  }
+}

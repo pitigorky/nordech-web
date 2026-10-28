@@ -112,10 +112,10 @@
 
 .contact__channel-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  color: var(--text-tertiary);
-  letter-spacing: 0.06em;
+  color: var(--accent-electric);
+  letter-spacing: 0.08em;
 }
 
 .contact__channel-value {
@@ -131,9 +131,9 @@ a.contact__channel-value:hover {
 }
 
 .contact__channel-sub {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  line-height: 1.4;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
 }
 
 /* Form Card */

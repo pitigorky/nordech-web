@@ -12,112 +12,108 @@ interface SystemNode {
   tagline: string
   detail: string
   specs: string[]
-  radarLabel: string
-  radarSub: string
+  tabName: string
+  tagTitle: string
+  tagCode: string
   cx: number
   cy: number
-  tagX: number
-  tagY: number
-  connectorFrom: { x: number; y: number }
-  connectorTo: { x: number; y: number }
+  tagBoxX: number
+  tagBoxY: number
+  tagBoxW: number
+  tagBoxH: number
   pathD: string
-  bendX: number
-  bendY: number
 }
 
 const NODES: SystemNode[] = [
   {
     id: 'cloud',
     name: 'Cloud & Infraestructura',
-    code: 'SYS-01 // CLOUD',
-    category: 'INFRAESTRUCTURA',
+    code: 'SYS-01 // CLOUD & M365',
+    category: 'ARQUITECTURA HÍBRIDA',
     badge: 'MULTI-CLOUD & M365',
-    tagline: 'Arquitectura híbrida y escalabilidad',
+    tagline: 'Sistemas centralizados y entornos cloud de alta disponibilidad',
     detail:
-      'Diseño, despliegue y administración integral de infraestructuras en nube y entornos de trabajo. Consolidación de Microsoft 365, servidores híbridos y optimización continua de recursos.',
-    specs: ['Microsoft 365', 'Azure & AWS', 'Servidores Híbridos', 'Gestión de Identidades'],
-    radarLabel: 'CLOUD',
-    radarSub: 'GESTIÓN INTEGRAL',
-    cx: 490,
-    cy: 125,
-    tagX: 450,
-    tagY: 60,
-    connectorFrom: { x: 490, y: 125 },
-    connectorTo: { x: 490, y: 102 },
-    pathD: 'M 340 250 L 415 175 L 490 125',
-    bendX: 415,
-    bendY: 175,
+      'Administración integral de servidores, Microsoft 365 corporativo, redes seguras y optimización continua de recursos.',
+    specs: ['Microsoft 365', 'Azure & AWS', 'Redes & VPN', 'Gestión Entra ID'],
+    tabName: 'CLOUD & M365',
+    tagTitle: 'Cloud & M365',
+    tagCode: 'SYS-01 · CLOUD',
+    cx: 410,
+    cy: 85,
+    tagBoxX: 438,
+    tagBoxY: 66,
+    tagBoxW: 142,
+    tagBoxH: 38,
+    pathD: 'M 300 180 L 360 130 L 410 85',
   },
   {
     id: 'security',
     name: 'Ciberseguridad Perimetral',
-    code: 'SYS-02 // SECURITY',
-    category: 'DEFENSA Y PROTECCIÓN',
-    badge: 'ENFOQUE ZERO-TRUST',
-    tagline: 'Protección proactiva y control de accesos',
+    code: 'SYS-02 // CIBERSEGURIDAD',
+    category: 'DEFENSA ACTIVA',
+    badge: 'ZERO-TRUST & EDR',
+    tagline: 'Protección proactiva de puestos, accesos e información crítica',
     detail:
-      'Monitorización constante del perímetro corporativo, protección avanzada de puestos y servidores (EDR), autenticación robusta y adecuación a directivas de seguridad informática.',
-    specs: ['Protección EDR', 'Zero Trust', 'Firewall Gestionado', 'Bastionado de Puestos'],
-    radarLabel: 'SECURITY',
-    radarSub: 'PROTECCIÓN ACTIVA',
+      'Monitorización constante, bastionado de sistemas, protección avanzada en puestos (EDR/XDR) y autenticación multifactor.',
+    specs: ['Protección EDR', 'Zero-Trust', 'Firewall Gestionado', 'Auditoría Permisos'],
+    tabName: 'CIBERSEGURIDAD',
+    tagTitle: 'Ciberseguridad',
+    tagCode: 'SYS-02 · SEGURIDAD',
     cx: 190,
-    cy: 125,
-    tagX: 80,
-    tagY: 60,
-    connectorFrom: { x: 190, y: 125 },
-    connectorTo: { x: 190, y: 102 },
-    pathD: 'M 340 250 L 265 175 L 190 125',
-    bendX: 265,
-    bendY: 175,
+    cy: 85,
+    tagBoxX: 20,
+    tagBoxY: 66,
+    tagBoxW: 142,
+    tagBoxH: 38,
+    pathD: 'M 300 180 L 240 130 L 190 85',
   },
   {
     id: 'automation',
     name: 'Automatización & IA',
-    code: 'SYS-03 // AUTOMATION',
+    code: 'SYS-03 // AUTOMATIZACIÓN & IA',
     category: 'EFICIENCIA OPERATIVA',
-    badge: 'FLUJOS INTELIGENTES',
-    tagline: 'Procesos autónomos y resolución ágil',
+    badge: 'AGENTES & WORKFLOWS',
+    tagline: 'Flujos automatizados y aplicaciones prácticas de IA en tu operativa',
     detail:
-      'Automatización de mantenimientos preventivos, orquestación de tareas rutinarias de IT y alertas inteligentes para reducir incidencias y optimizar la operativa de tu equipo.',
-    specs: ['Mantenimiento Automatizado', 'Alertas Proactivas', 'Workflows IT', 'IA Aplicada'],
-    radarLabel: 'AUTOMATION',
-    radarSub: 'FLUJOS AUTÓNOMOS',
+      'Conexión entre plataformas de negocio, eliminación de tareas manuales repetitivas y despliegue de asistentes inteligentes.',
+    specs: ['Copilot Ready', 'Flujos Automáticos', 'Integración ERP/CRM', 'IA Aplicada'],
+    tabName: 'AUTOMATIZACIÓN & IA',
+    tagTitle: 'Automatización & IA',
+    tagCode: 'SYS-03 · AUTO & IA',
     cx: 190,
-    cy: 375,
-    tagX: 80,
-    tagY: 395,
-    connectorFrom: { x: 190, y: 375 },
-    connectorTo: { x: 190, y: 395 },
-    pathD: 'M 340 250 L 265 325 L 190 375',
-    bendX: 265,
-    bendY: 325,
+    cy: 275,
+    tagBoxX: 20,
+    tagBoxY: 256,
+    tagBoxW: 142,
+    tagBoxH: 38,
+    pathD: 'M 300 180 L 240 230 L 190 275',
   },
   {
     id: 'resilience',
-    name: 'Sistemas & Resiliencia',
-    code: 'SYS-04 // RESILIENCE',
-    category: 'CONTINUIDAD OPERATIVA',
-    badge: 'CUSTODIA Y BACKUPS',
-    tagline: 'Seguridad de datos y contingencia',
+    name: 'Backup & Resiliencia',
+    code: 'SYS-04 // CONTINUIDAD IT',
+    category: 'SEGURIDAD DE DATOS',
+    badge: 'COPIAS INMUTABLES',
+    tagline: 'Garantía de recuperación ante cualquier contingencia o ransomware',
     detail:
-      'Implementación de copias de seguridad inmutables contra incidentes o ransomware, verificación periódica de restauración y diseño de planes de contingencia para salvaguardar la actividad del negocio.',
-    specs: ['Backups Inmutables', 'Planes de Contingencia', 'Verificación Periódica', 'Custodia Segura'],
-    radarLabel: 'RESILIENCE',
-    radarSub: 'COPIAS & CUSTODIA',
-    cx: 490,
-    cy: 375,
-    tagX: 450,
-    tagY: 395,
-    connectorFrom: { x: 490, y: 375 },
-    connectorTo: { x: 490, y: 395 },
-    pathD: 'M 340 250 L 415 325 L 490 375',
-    bendX: 415,
-    bendY: 325,
+      'Estrategia de backup híbrido 3-2-1 con copias inmutables, custodia externa cifrada y simulacros periódicos de restauración.',
+    specs: ['Anti-Ransomware', 'Estrategia 3-2-1', 'Restauración Testeada', 'Custodia Cifrada'],
+    tabName: 'BACKUP & RESILIENCIA',
+    tagTitle: 'Backup & Resiliencia',
+    tagCode: 'SYS-04 · CONTINUIDAD',
+    cx: 410,
+    cy: 275,
+    tagBoxX: 438,
+    tagBoxY: 256,
+    tagBoxW: 142,
+    tagBoxH: 38,
+    pathD: 'M 300 180 L 360 230 L 410 275',
   },
 ]
 
 export function TechVisual() {
   const [activeNodeId, setActiveNodeId] = useState<SystemId>('cloud')
+  const [hoveredNodeId, setHoveredNodeId] = useState<SystemId | null>(null)
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([])
 
   const activeNode = NODES.find((n) => n.id === activeNodeId) ?? NODES[0]
@@ -150,122 +146,143 @@ export function TechVisual() {
     <div
       className="tech-visual"
       role="region"
-      aria-label="Visualización interactiva de arquitectura IT NORDECH"
+      aria-label="Consola de Arquitectura Tecnológica NORDECH"
     >
-      {/* Decorative Technical Frame Backdrop */}
+      {/* Precision Hardware Console Chassis (Refero Style) */}
       <div className="tech-visual__frame">
-        {/* Architectural Coordinates Corner Markers */}
+        {/* Precision Corner Crosshairs (+) */}
         <span className="tech-visual__crosshair tech-visual__crosshair--tl" aria-hidden="true">+</span>
         <span className="tech-visual__crosshair tech-visual__crosshair--tr" aria-hidden="true">+</span>
         <span className="tech-visual__crosshair tech-visual__crosshair--bl" aria-hidden="true">+</span>
         <span className="tech-visual__crosshair tech-visual__crosshair--br" aria-hidden="true">+</span>
 
-        {/* Technical Header Pill */}
-        <div className="tech-visual__top-meta">
-          <div className="tech-visual__meta-badge">
-            <span className="tech-visual__meta-dot" aria-hidden="true"></span>
-            <span>NORDECH // GESTIÓN DE SISTEMAS</span>
+        {/* Console Header Bar */}
+        <div className="tech-visual__console-header">
+          <div className="tech-visual__header-left">
+            <span className="tech-visual__led tech-visual__led--red" aria-hidden="true"></span>
+            <span className="tech-visual__led tech-visual__led--yellow" aria-hidden="true"></span>
+            <span className="tech-visual__led tech-visual__led--green" aria-hidden="true"></span>
+            <span className="tech-visual__header-title">NORDECH OS</span>
           </div>
-          <div className="tech-visual__meta-coords">
-            COORD 41°23&apos;N · 02°10&apos;E
+
+          <div className="tech-visual__header-right">
+            <span className="tech-visual__status-pulse" aria-hidden="true"></span>
+            <span className="tech-visual__status-text">100% OPERATIVO</span>
           </div>
         </div>
 
-        {/* Interactive SVG Diagram */}
-        <div className="tech-visual__canvas-wrap">
+        {/* Segmented System Selector Tabs */}
+        <div
+          className="tech-visual__segment-bar"
+          role="tablist"
+          aria-label="Módulos de arquitectura técnica"
+        >
+          {NODES.map((node, idx) => {
+            const isActive = activeNodeId === node.id
+            const isHovered = hoveredNodeId === node.id
+            return (
+              <button
+                key={node.id}
+                ref={(el) => {
+                  tabsRef.current[idx] = el
+                }}
+                id={`tab-${node.id}`}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`panel-${node.id}`}
+                tabIndex={isActive ? 0 : -1}
+                className={`tech-visual__segment-btn ${isActive ? 'is-active' : ''} ${isHovered ? 'is-hovered' : ''}`}
+                onClick={() => setActiveNodeId(node.id)}
+                onMouseEnter={() => setHoveredNodeId(node.id)}
+                onMouseLeave={() => setHoveredNodeId(null)}
+                onFocus={() => setHoveredNodeId(node.id)}
+                onBlur={() => setHoveredNodeId(null)}
+                onKeyDown={(e) => handleTabKeyDown(e, idx)}
+              >
+                <span className="tech-visual__segment-idx">0{idx + 1}</span>
+                <span className="tech-visual__segment-name">{node.tabName}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Central Square/Horizontal Topology Canvas (Clean Radar WITHOUT needle) */}
+        <div className="tech-visual__viewport">
           <svg
             className="tech-visual__svg"
-            viewBox="0 0 680 500"
+            viewBox="0 0 600 360"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            aria-label="Mapa interactivo de arquitectura IT"
+            role="img"
+            aria-label="Mapa de topología de infraestructura NORDECH"
           >
             <defs>
-              {/* Electric blue glow filter */}
-              <filter id="electric-glow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="5" result="blur" />
+              {/* Electric blue glow */}
+              <filter id="tv-electric-glow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="3.5" result="blur" />
                 <feComposite in="SourceGraphic" in2="blur" operator="over" />
               </filter>
 
-              {/* Active bus line gradient */}
-              <linearGradient id="bus-gradient-active" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#0052FF" stopOpacity="0.95" />
-                <stop offset="50%" stopColor="#0066FF" stopOpacity="0.95" />
-                <stop offset="100%" stopColor="#00D2FF" stopOpacity="0.9" />
-              </linearGradient>
-
-              {/* Idle bus line gradient */}
-              <linearGradient id="bus-gradient-idle" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#0F172A" stopOpacity="0.14" />
-                <stop offset="100%" stopColor="#0F172A" stopOpacity="0.08" />
-              </linearGradient>
-
-              {/* Core radial ambient glow */}
-              <radialGradient id="core-radial-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#0052FF" stopOpacity="0.16" />
-                <stop offset="60%" stopColor="#0052FF" stopOpacity="0.04" />
+              {/* Core radial glow */}
+              <radialGradient id="tv-core-radial" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#00D2FF" stopOpacity="0.25" />
+                <stop offset="60%" stopColor="#0052FF" stopOpacity="0.08" />
                 <stop offset="100%" stopColor="#0052FF" stopOpacity="0" />
               </radialGradient>
+
+              {/* Active bus gradient */}
+              <linearGradient id="tv-bus-active" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#00D2FF" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#0052FF" stopOpacity="0.95" />
+              </linearGradient>
             </defs>
 
-            {/* Background Geometric Grid & Rings */}
+            {/* Concentric Radar Rings & Crosshairs */}
             <g className="tech-visual__grid-lines" aria-hidden="true">
-              {/* Concentric radar rings */}
-              <circle cx="340" cy="250" r="75" className="tech-visual__ring tech-visual__ring--inner" />
-              <circle cx="340" cy="250" r="145" className="tech-visual__ring tech-visual__ring--mid" />
-              <circle cx="340" cy="250" r="215" className="tech-visual__ring tech-visual__ring--outer" strokeDasharray="4 8" />
+              <circle cx="300" cy="180" r="60" className="tech-visual__ring tech-visual__ring--inner" />
+              <circle cx="300" cy="180" r="115" className="tech-visual__ring tech-visual__ring--mid" />
+              <circle cx="300" cy="180" r="160" className="tech-visual__ring tech-visual__ring--outer" strokeDasharray="3 6" />
 
-              {/* Cardinal Axes */}
-              <line x1="340" y1="35" x2="340" y2="465" className="tech-visual__axis" />
-              <line x1="125" y1="250" x2="555" y2="250" className="tech-visual__axis" />
+              {/* Axes */}
+              <line x1="300" y1="20" x2="300" y2="340" className="tech-visual__axis" />
+              <line x1="140" y1="180" x2="460" y2="180" className="tech-visual__axis" />
 
-              {/* Cardinal degree labels */}
-              <text x="340" y="26" textAnchor="middle" className="tech-visual__degree">000°</text>
-              <text x="568" y="253" textAnchor="start" className="tech-visual__degree">090°</text>
-              <text x="340" y="482" textAnchor="middle" className="tech-visual__degree">180°</text>
-              <text x="112" y="253" textAnchor="end" className="tech-visual__degree">270°</text>
-
-              {/* Calibration dots */}
-              <circle cx="340" cy="35" r="2" className="tech-visual__notch" />
-              <circle cx="555" cy="250" r="2" className="tech-visual__notch" />
-              <circle cx="340" cy="465" r="2" className="tech-visual__notch" />
-              <circle cx="125" cy="250" r="2" className="tech-visual__notch" />
+              {/* Degree labels */}
+              <text x="300" y="14" textAnchor="middle" className="tech-visual__degree">000°</text>
+              <text x="472" y="183" textAnchor="start" className="tech-visual__degree">090°</text>
+              <text x="300" y="352" textAnchor="middle" className="tech-visual__degree">180°</text>
+              <text x="128" y="183" textAnchor="end" className="tech-visual__degree">270°</text>
             </g>
 
-            {/* Central Glow Field */}
-            <circle cx="340" cy="250" r="95" fill="url(#core-radial-glow)" aria-hidden="true" />
+            {/* Central Ambient Glow Field */}
+            <circle cx="300" cy="180" r="75" fill="url(#tv-core-radial)" aria-hidden="true" />
 
             {/* Connection Conduits */}
             {NODES.map((node) => {
               const isActive = activeNodeId === node.id
+              const isHovered = hoveredNodeId === node.id
+              const isHighlighted = isActive || isHovered
+
               return (
                 <g key={`conduit-${node.id}`} className="tech-visual__conduit" aria-hidden="true">
-                  {/* Underlay trace */}
                   <path
                     d={node.pathD}
-                    className={`tech-visual__conduit-path ${isActive ? 'tech-visual__conduit-path--active' : ''}`}
-                    stroke={isActive ? 'url(#bus-gradient-active)' : 'url(#bus-gradient-idle)'}
-                    strokeWidth={isActive ? 2.5 : 1.25}
+                    className={`tech-visual__conduit-path ${isHighlighted ? 'tech-visual__conduit-path--active' : ''}`}
+                    stroke={isHighlighted ? 'url(#tv-bus-active)' : 'rgba(255, 255, 255, 0.1)'}
+                    strokeWidth={isHighlighted ? 2.2 : 1}
                   />
 
-                  {/* Junction bend tick */}
-                  <rect
-                    x={node.bendX - 2.5}
-                    y={node.bendY - 2.5}
-                    width="5"
-                    height="5"
-                    className={`tech-visual__conduit-junction ${isActive ? 'is-active' : ''}`}
-                  />
-
-                  {/* Flowing animated pulse packet */}
+                  {/* Flowing animated pulse packet along the bus */}
                   <circle
-                    r={isActive ? 3.5 : 2}
-                    className={`tech-visual__packet ${isActive ? 'tech-visual__packet--active' : ''}`}
-                    fill={isActive ? '#0052FF' : '#94A3B8'}
+                    r={isHighlighted ? 3 : 1.5}
+                    className={`tech-visual__packet ${isHighlighted ? 'tech-visual__packet--active' : ''}`}
+                    fill={isHighlighted ? '#00D2FF' : 'rgba(255, 255, 255, 0.25)'}
+                    filter={isHighlighted ? 'url(#tv-electric-glow)' : undefined}
                   >
                     <animateMotion
                       path={node.pathD}
-                      dur={isActive ? '2.4s' : '4.5s'}
+                      dur={isHighlighted ? '2s' : '4s'}
                       repeatCount="indefinite"
                       keyPoints="0;1"
                       keyTimes="0;1"
@@ -275,32 +292,29 @@ export function TechVisual() {
               )
             })}
 
-            {/* Central NORDECH Command Core */}
-            <g className="tech-visual__core" transform="translate(340, 250)" aria-hidden="true">
-              {/* Outer rotating dashed hexagonal halo */}
+            {/* Central Command Core with Rotating Halo */}
+            <g className="tech-visual__core" transform="translate(300, 180)" aria-hidden="true">
               <polygon
-                points="0,-44 38,-22 38,22 0,44 -38,22 -38,-22"
+                points="0,-36 31,-18 31,18 0,36 -31,18 -31,-18"
                 className="tech-visual__core-halo"
               />
-              {/* Solid crystal core polygon */}
               <polygon
-                points="0,-34 29.5,-17 29.5,17 0,34 -29.5,17 -29.5,-17"
+                points="0,-26 22,-13 22,13 0,26 -22,13 -22,-13"
                 className="tech-visual__core-plate"
               />
-              {/* NORDECH 'N' Emblem */}
               <path
-                d="M -9 11 L -9 -11 L 3 2.5 L 3 -11 L 9 -11 L 9 11 L -3 -2.5 L -3 11 Z"
+                d="M -7 9 L -7 -9 L 2 2 L 2 -9 L 7 -9 L 7 9 L -2 -2 L -2 9 Z"
                 className="tech-visual__core-n"
               />
-              {/* Core micro label */}
-              <text x="0" y="56" textAnchor="middle" className="tech-visual__core-label">
-                NORDECH CORE
-              </text>
             </g>
 
-            {/* System Nodes & Labels */}
+            {/* Interactive System Nodes */}
             {NODES.map((node) => {
               const isActive = activeNodeId === node.id
+              const isHovered = hoveredNodeId === node.id
+              const isHighlighted = isActive || isHovered
+              const isRight = node.cx > 300
+
               return (
                 <g
                   key={node.id}
@@ -308,9 +322,13 @@ export function TechVisual() {
                   role="button"
                   tabIndex={0}
                   aria-pressed={isActive}
-                  aria-label={`Sistema ${node.name}: ${node.radarSub}`}
-                  className={`tech-visual__node ${isActive ? 'is-active' : ''}`}
+                  aria-label={`Sistema ${node.name}`}
+                  className={`tech-visual__node ${isActive ? 'is-active' : ''} ${isHovered ? 'is-hovered' : ''}`}
                   onClick={() => setActiveNodeId(node.id)}
+                  onMouseEnter={() => setHoveredNodeId(node.id)}
+                  onMouseLeave={() => setHoveredNodeId(null)}
+                  onFocus={() => setHoveredNodeId(node.id)}
+                  onBlur={() => setHoveredNodeId(null)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault()
@@ -318,16 +336,18 @@ export function TechVisual() {
                     }
                   }}
                 >
-                  {/* Hairline connector between node dot and tag box */}
-                  <line
-                    x1={node.connectorFrom.x}
-                    y1={node.connectorFrom.y}
-                    x2={node.connectorTo.x}
-                    y2={node.connectorTo.y}
-                    className={`tech-visual__node-lead ${isActive ? 'is-active' : ''}`}
+                  {/* Unified continuous hit area covering both circle and tag box */}
+                  <rect
+                    x={isRight ? 390 : 20}
+                    y={node.cy - 22}
+                    width={190}
+                    height={44}
+                    rx="8"
+                    fill="transparent"
+                    className="tech-visual__hit-area"
                   />
 
-                  {/* Ripple pulse ring when active */}
+                  {/* Pulse wave when active */}
                   {isActive && (
                     <circle
                       cx={node.cx}
@@ -337,46 +357,72 @@ export function TechVisual() {
                     />
                   )}
 
-                  {/* Node Outer Ring */}
+                  {/* Outer Ring (+25% size) */}
                   <circle
                     cx={node.cx}
                     cy={node.cy}
-                    r="14"
+                    r={isHighlighted ? 16.5 : 14}
                     className="tech-visual__node-ring"
                   />
 
-                  {/* Node Center Dot */}
+                  {/* Center Dot (+25% size) */}
                   <circle
                     cx={node.cx}
                     cy={node.cy}
-                    r={isActive ? 5.5 : 4}
+                    r={isHighlighted ? 5.5 : 4.2}
                     className="tech-visual__node-dot"
+                    fill={isHighlighted ? '#00D2FF' : '#CBD5E1'}
                   />
 
-                  {/* Refined Node Tag Pill (High Contrast & Clear Typography) */}
+                  {/* Node Label Tag Box */}
                   <g
-                    transform={`translate(${node.tagX}, ${node.tagY})`}
-                    className="tech-visual__node-tag"
+                    className={`tech-visual__node-tag-group ${isHighlighted ? 'is-highlighted' : 'is-default'}`}
                   >
-                    <rect
-                      width="150"
-                      height="42"
-                      rx="6"
-                      className="tech-visual__node-tag-bg"
+                    {/* Consistent connecting tick */}
+                    <line
+                      x1={isRight ? node.cx + (isHighlighted ? 16.5 : 14) : node.cx - (isHighlighted ? 16.5 : 14)}
+                      y1={node.cy}
+                      x2={isRight ? node.tagBoxX : node.tagBoxX + node.tagBoxW}
+                      y2={node.cy}
+                      className="tech-visual__tag-lead"
                     />
+
+                    {/* Tag Box Container */}
+                    <rect
+                      x={node.tagBoxX}
+                      y={node.tagBoxY}
+                      width={node.tagBoxW}
+                      height={node.tagBoxH}
+                      rx="6"
+                      className="tech-visual__tag-rect"
+                    />
+
+                    {/* Indicator Dot inside Box */}
+                    <circle
+                      cx={node.tagBoxX + 12}
+                      cy={node.tagBoxY + 19}
+                      r="3"
+                      className="tech-visual__tag-dot"
+                    />
+
+                    {/* Code Text */}
                     <text
-                      x="14"
-                      y="18"
-                      className="tech-visual__node-tag-kicker"
+                      x={node.tagBoxX + 22}
+                      y={node.tagBoxY + 15}
+                      textAnchor="start"
+                      className="tech-visual__tag-code"
                     >
-                      {node.code}
+                      {node.tagCode}
                     </text>
+
+                    {/* Category Title */}
                     <text
-                      x="14"
-                      y="32"
-                      className="tech-visual__node-tag-title"
+                      x={node.tagBoxX + 22}
+                      y={node.tagBoxY + 29}
+                      textAnchor="start"
+                      className="tech-visual__tag-title"
                     >
-                      {node.radarSub}
+                      {node.tagTitle}
                     </text>
                   </g>
                 </g>
@@ -385,81 +431,26 @@ export function TechVisual() {
           </svg>
         </div>
 
-        {/* Interactive Telemetry HUD / Inspector Card */}
-        <div className="tech-visual__hud">
-          {/* Accessible Navigation Tabs */}
-          <div
-            className="tech-visual__hud-tabs"
-            role="tablist"
-            aria-label="Sectores de infraestructura IT"
-          >
-            {NODES.map((node, idx) => {
-              const isActive = activeNodeId === node.id
-              return (
-                <button
-                  key={node.id}
-                  ref={(el) => {
-                    tabsRef.current[idx] = el
-                  }}
-                  id={`tab-${node.id}`}
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-controls={`panel-${node.id}`}
-                  tabIndex={isActive ? 0 : -1}
-                  className={`tech-visual__hud-tab ${isActive ? 'is-active' : ''}`}
-                  onClick={() => setActiveNodeId(node.id)}
-                  onKeyDown={(e) => handleTabKeyDown(e, idx)}
-                >
-                  <span className="tech-visual__hud-tab-dot" aria-hidden="true"></span>
-                  <span className="tech-visual__hud-tab-code">0{idx + 1}</span>
-                  <span className="tech-visual__hud-tab-name">{node.id.toUpperCase()}</span>
-                </button>
-              )
-            })}
+        {/* Integrated Frosted Telemetry Dock (Lower Bay) */}
+        <div
+          id={`panel-${activeNode.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${activeNode.id}`}
+          className="tech-visual__dock"
+        >
+          <div className="tech-visual__dock-top">
+            <span className="tech-visual__dock-code">{activeNode.code}</span>
+            <span className="tech-visual__dock-badge">{activeNode.badge}</span>
           </div>
 
-          {/* Dynamic Inspector Panel with Discrete Transition */}
-          <div
-            key={activeNode.id}
-            id={`panel-${activeNode.id}`}
-            role="tabpanel"
-            aria-labelledby={`tab-${activeNode.id}`}
-            className="tech-visual__hud-body"
-          >
-            <div className="tech-visual__hud-header">
-              <span className="tech-visual__hud-code">{activeNode.code}</span>
-              <div className="tech-visual__hud-status">
-                <span className="tech-visual__hud-status-dot" aria-hidden="true"></span>
-                <span>GESTIÓN ACTIVA</span>
-              </div>
-            </div>
+          <p className="tech-visual__dock-tagline">{activeNode.tagline}</p>
 
-            <div className="tech-visual__hud-title-row">
-              <h3 className="tech-visual__hud-title">{activeNode.name}</h3>
-              <span className="tech-visual__hud-badge">{activeNode.badge}</span>
-            </div>
-
-            <p className="tech-visual__hud-tagline">{activeNode.tagline}</p>
-            <p className="tech-visual__hud-desc">{activeNode.detail}</p>
-
-            <div className="tech-visual__hud-specs" aria-label="Capacidades clave">
-              {activeNode.specs.map((spec) => (
-                <span key={spec} className="tech-visual__hud-spec-pill">
-                  {spec}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Technical Ticker */}
-        <div className="tech-visual__footer">
-          <div className="tech-visual__footer-left">
-            <span className="tech-visual__live-pulse" aria-hidden="true"></span>
-            <span>ARQUITECTURA TECNOLÓGICA B2B · CONTROL CENTRALIZADO</span>
-          </div>
-          <div className="tech-visual__footer-right">
-            <span>NORDECH INFRASTRUCTURE SYSTEMS</span>
+          <div className="tech-visual__dock-specs" aria-label="Capacidades clave">
+            {activeNode.specs.map((spec) => (
+              <span key={spec} className="tech-visual__dock-pill">
+                {spec}
+              </span>
+            ))}
           </div>
         </div>
       </div>

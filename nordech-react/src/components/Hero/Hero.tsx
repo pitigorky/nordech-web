@@ -1,31 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { TechVisual } from '../TechVisual/TechVisual'
-import { ScrollIndicator } from '../ScrollIndicator/ScrollIndicator'
 import './Hero.css'
-
-interface HeroMetric {
-  value: string
-  label: string
-  subtext: string
-}
-
-const HERO_METRICS: HeroMetric[] = [
-  {
-    value: '360°',
-    label: 'Cobertura Integral',
-    subtext: 'Sistemas, cloud, seguridad y soporte',
-  },
-  {
-    value: 'Directo',
-    label: 'Equipo Senior Asignado',
-    subtext: 'Sin intermediarios ni desvíos',
-  },
-  {
-    value: 'Zero-Trust',
-    label: 'Ciberseguridad Activa',
-    subtext: 'Protección perimetral y de puesto',
-  },
-]
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null)
@@ -104,27 +79,26 @@ export function Hero() {
             {/* Editorial Positioning Badge */}
             <div className="hero__badge">
               <span className="hero__badge-dot" aria-hidden="true"></span>
-              <span className="hero__badge-kicker">EXTERNAL IT PARTNER</span>
+              <span className="hero__badge-kicker">PARTNER IT EXTERNO</span>
               <span className="hero__badge-divider" aria-hidden="true">/</span>
-              <span className="hero__badge-category">SISTEMAS · CLOUD · SEGURIDAD</span>
+              <span className="hero__badge-category">SISTEMAS · CLOUD · CIBERSEGURIDAD · IA</span>
             </div>
 
             {/* Headline */}
             <h1 id="hero-heading" className="hero__title">
-              Tu departamento IT,
-              <span className="hero__title-accent">sin tener que montarlo.</span>
+              Tu IT.
+              <span className="hero__title-accent">Bajo control.</span>
             </h1>
 
             {/* Value Proposition Description */}
             <p className="hero__lead">
-              Gestionamos de forma integral tus sistemas, infraestructura cloud, ciberseguridad y automatización.
-              Toda la solidez y agilidad de un equipo técnico senior sin la fricción ni el coste de construirlo internamente.
+              Sistemas, cloud y seguridad para que tu empresa funcione sin complicaciones.
             </p>
 
             {/* Action Group */}
             <div className="hero__actions">
               <a href="#contacto" className="hero__cta-primary">
-                <span>Hablemos de tu IT</span>
+                <span>Contacta con nosotros</span>
                 <svg
                   className="hero__cta-icon"
                   width="16"
@@ -144,7 +118,7 @@ export function Hero() {
               </a>
 
               <a href="#servicios" className="hero__cta-secondary">
-                <span>Explorar servicios</span>
+                <span>Ver servicios</span>
                 <svg
                   className="hero__cta-secondary-icon"
                   width="14"
@@ -164,18 +138,6 @@ export function Hero() {
               </a>
             </div>
 
-            {/* Telemetry / Proof Metrics */}
-            <div className="hero__metrics" role="list" aria-label="Métricas de rendimiento NORDECH">
-              {HERO_METRICS.map((metric) => (
-                <div key={metric.label} className="hero__metric-item" role="listitem">
-                  <span className="hero__metric-value">{metric.value}</span>
-                  <div className="hero__metric-text">
-                    <strong className="hero__metric-label">{metric.label}</strong>
-                    <span className="hero__metric-sub">{metric.subtext}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right Column: Interactive Tech Visual */}
@@ -184,8 +146,6 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Bottom Editorial Scroll Prompt */}
-        <ScrollIndicator />
       </div>
     </section>
   )

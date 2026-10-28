@@ -37,11 +37,9 @@ export function Footer() {
             <span className="footer__col-title">NAVEGACIÓN</span>
             <ul className="footer__links-list">
               <li><a href="#inicio">Inicio</a></li>
-              <li><a href="#problema">El problema</a></li>
-              <li><a href="#servicios">Servicios y capacidades</a></li>
-              <li><a href="#metodo">Método NORDECH</a></li>
-              <li><a href="#diferenciacion">Modelo de gestión</a></li>
-              <li><a href="#para-quien">A quién acompañamos</a></li>
+              <li><a href="#propuesta">Nuestro enfoque</a></li>
+              <li><a href="#servicios">Servicios</a></li>
+              <li><a href="#ia">Inteligencia Artificial</a></li>
               <li><a href="#contacto">Contacto</a></li>
             </ul>
           </div>
@@ -51,11 +49,11 @@ export function Footer() {
             <span className="footer__col-title">ÁREAS DE SERVICIO</span>
             <ul className="footer__links-list">
               <li><a href="#servicios">Gestión IT externa</a></li>
-              <li><a href="#infraestructura">Infraestructura y redes</a></li>
+              <li><a href="#servicios">Infraestructura y redes</a></li>
               <li><a href="#servicios">Cloud & Microsoft 365</a></li>
-              <li><a href="#seguridad">Ciberseguridad y EDR</a></li>
+              <li><a href="#servicios">Ciberseguridad y EDR</a></li>
               <li><a href="#servicios">Backup y continuidad (DRP)</a></li>
-              <li><a href="#servicios">Automatización e IA aplicada</a></li>
+              <li><a href="#ia">Automatización e IA aplicada</a></li>
             </ul>
           </div>
 
@@ -64,14 +62,14 @@ export function Footer() {
             <span className="footer__col-title">CONTACTO DIRECTO</span>
             <div className="footer__contact-box">
               <span className="footer__contact-label">CONSULTAS GENERALES:</span>
-              <a href="mailto:contacto@nordech.es" className="footer__contact-email">
-                contacto@nordech.es
+              <a href="mailto:info@nordech.es" className="footer__contact-email">
+                info@nordech.es
               </a>
               <p className="footer__contact-note">
                 Atención directa y valoración técnica por un responsable senior.
               </p>
               <a href="#contacto" className="footer__contact-cta">
-                <span>Hablemos de tu IT</span>
+                <span>Contacta con nosotros</span>
                 <span aria-hidden="true">↗</span>
               </a>
             </div>
