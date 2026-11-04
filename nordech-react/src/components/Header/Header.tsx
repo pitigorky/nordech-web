@@ -64,19 +64,11 @@ export function Header() {
       <div className="container header__inner">
         {/* Brand Lockup */}
         <a href="#inicio" className="header__brand" onClick={closeMobileMenu}>
-          <div className="header__brand-mark" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M5 19V5L15 15.5V5H19V19L9 8.5V19H5Z"
-                fill="currentColor"
-              />
-            </svg>
-          </div>
-          <div className="header__brand-text">
-            <span className="header__brand-name">NORDECH</span>
-            <span className="header__brand-divider" aria-hidden="true">/</span>
-            <span className="header__brand-descriptor">IT Partner</span>
-          </div>
+          <img
+            src="/nordech-logo.svg"
+            alt="NORDECH"
+            className="header__brand-logo"
+          />
         </a>
 
         {/* Desktop Navigation */}

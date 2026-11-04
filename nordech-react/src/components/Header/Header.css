@@ -619,3 +619,11 @@
     transform: none !important;
   }
 }
+
+/* Official NORDECH logo */
+.header__brand-logo {
+  display: block;
+  width: 165px;
+  height: auto;
+  object-fit: contain;
+}

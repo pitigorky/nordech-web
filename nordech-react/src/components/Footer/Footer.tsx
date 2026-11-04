@@ -15,10 +15,11 @@ export function Footer() {
           {/* Brand & Purpose */}
           <div className="footer__brand-col">
             <a href="#inicio" className="footer__brand">
-              <span className="footer__brand-mark" aria-hidden="true">N</span>
-              <span className="footer__brand-name">NORDECH</span>
-              <span className="footer__brand-divider" aria-hidden="true">/</span>
-              <span className="footer__brand-desc">IT PARTNER</span>
+              <img
+                src="/nordech-logo.svg"
+                alt="NORDECH"
+                className="footer__brand-logo"
+              />
             </a>
 
             <p className="footer__tagline">

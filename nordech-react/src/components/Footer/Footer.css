@@ -249,3 +249,11 @@
 .footer__back-to-top:hover {
   color: var(--accent-electric);
 }
+
+/* Official NORDECH logo */
+.footer__brand-logo {
+  display: block;
+  width: 170px;
+  height: auto;
+  object-fit: contain;
+}
